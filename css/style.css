@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+}
+
+canvas {
+    display: block;
+}
+
+#typing {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    margin: 0;
+    color: white;
+    font-family: sans-serif;
+    font-size: clamp(1rem, 3vw, 2rem);
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+.controls {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+    padding: 12px;
+    color: white;
+    background: rgb(0 0 0 / 60%);
+    font-family: sans-serif;
+    border-radius: 8px;
+}
+
+.control {
+    display: grid;
+    grid-template-columns: 90px 140px 40px;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.control:last-child {
+    margin-bottom: 0;
+}
+
+#typing::after {
+    content: "|";
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
