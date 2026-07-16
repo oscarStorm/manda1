@@ -4,7 +4,8 @@ const messages = [
     "Computer Science Student",
     "Linux Enthusiast",
     "Always play e4 as white",
-    "Github: https://github.com/oscarStorm"
+    "Github: https://github.com/oscarStorm",
+    "Mail: oscar.emil.storm@gmail.com"
 ];
 
 let messageIndex = 0;
