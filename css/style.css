@@ -10,6 +10,30 @@ canvas {
     display: block;
 }
 
+[hidden] {
+    display: none !important;
+}
+
+#simulation-toggle {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 3;
+    padding: 8px 12px;
+    color: white;
+    background: rgb(0 0 0 / 70%);
+    border: 1px solid rgb(255 255 255 / 45%);
+    border-radius: 6px;
+    font: 600 14px/1 sans-serif;
+    cursor: pointer;
+}
+
+#simulation-toggle:hover,
+#simulation-toggle:focus-visible {
+    background: rgb(255 255 255 / 16%);
+    outline: none;
+}
+
 #typing {
     position: fixed;
     top: 50%;
@@ -25,7 +49,7 @@ canvas {
 
 .controls {
     position: fixed;
-    top: 16px;
+    top: 56px;
     left: 16px;
     z-index: 2;
     padding: 12px;

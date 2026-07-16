@@ -11,12 +11,21 @@
 
     <script src="js/boids.js" defer></script>
     <script src="js/typewriter.js" defer></script>
-    
+    <script src="js/simulation.js" defer></script> 
+    <script src="js/switcher.js" defer></script>
     <title>Boids</title>
 </head>
 
 <body>
     <canvas id="boid-canvas"></canvas>
+    <canvas id="simulation-canvas" hidden></canvas>
+
+    <button
+        id="simulation-toggle"
+        type="button"
+    >
+        Switch simulation
+    </button>
     
     <h1 id="typing"></h1>
     <div class="controls">

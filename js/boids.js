@@ -1,3 +1,4 @@
+(() => {
 class Vector {
     constructor(x = 0, y = 0) {
         this.x = x;
@@ -288,6 +289,8 @@ class Vector {
 
   const boids = [];
   const boidCount = 100;
+  let animationFrameId = null;
+  let isRunning = false;
 
   function resizeCanvas() {
       canvas.width = window.innerWidth;
@@ -328,6 +331,10 @@ class Vector {
   }
 
   function animate() {
+      if (!isRunning) {
+          return;
+      }
+
       context.fillStyle = "black";
       context.fillRect(
           0,
@@ -359,8 +366,37 @@ class Vector {
           boid.show(context);
       }
 
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
   }
 
-  animate();
+  function start() {
+      if (isRunning) {
+          return;
+      }
 
+      isRunning = true;
+      resizeCanvas();
+
+      if (boids.length === 0) {
+          for (let index = 0; index < boidCount; index++) {
+              boids.push(new Boid(canvas));
+          }
+      }
+
+      animate();
+  }
+
+  function stop() {
+      isRunning = false;
+
+      if (animationFrameId !== null) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+      }
+  }
+
+  window.boidsSimulation = {
+      start,
+      stop
+  };
+})();
