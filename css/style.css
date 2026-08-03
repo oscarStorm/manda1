@@ -10,18 +10,63 @@ canvas {
     display: block;
 }
 
+#game-frame {
+    position: fixed;
+    inset: 0;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    border: 0;
+    background: black;
+    z-index: 0;
+}
+
 [hidden] {
     display: none !important;
+}
+
+#game-toggle {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 20%;
+  z-index: 3;
+  padding: 8px 12px;
+  color: white;
+  background: rgb(221 191 223 / 60%);
+  border: 1px solid rgb(255 255 255 / 45%);
+  border-radius: 6px;
+  font: 600 14px/1 sans-serif;
+  cursor: pointer;
+
+}
+
+#worm-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 20%;
+  z-index: 3;
+  padding: 8px 12px;
+  color: white;
+  background: rgb(221 191 223 / 60%);
+  border: 1px solid rgb(255 255 255 / 45%);
+  border-radius: 6px;
+  font: 600 14px/1 sans-serif;
+  cursor: pointer;
+
 }
 
 #simulation-toggle {
     position: fixed;
     top: 16px;
     left: 16px;
+    width: 20%;
     z-index: 3;
     padding: 8px 12px;
     color: white;
-    background: rgb(0 0 0 / 70%);
+    background: rgb(221 191 223 / 60%);
     border: 1px solid rgb(255 255 255 / 45%);
     border-radius: 6px;
     font: 600 14px/1 sans-serif;
@@ -33,6 +78,20 @@ canvas {
     background: rgb(255 255 255 / 16%);
     outline: none;
 }
+
+
+#worm-toggle:hover,
+#worm-toggle:focus-visible {
+    background: rgb(255 255 255 / 16%);
+    outline: none;
+}
+
+#game-toggle:hover,
+#game-toggle:focus-visible {
+    background: rgb(255 255 255 / 16%);
+    outline: none;
+}
+
 
 #typing {
     position: fixed;

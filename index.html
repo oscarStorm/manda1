@@ -19,14 +19,34 @@
 <body>
     <canvas id="boid-canvas"></canvas>
     <canvas id="simulation-canvas" hidden></canvas>
+    <iframe
+        id="game-frame"
+        title="Goat game"
+        src="games/mini-game_1/index.html"
+        hidden
+    ></iframe>
 
     <button
         id="simulation-toggle"
         type="button"
     >
-        Switch simulation
+        boids
     </button>
     
+    <button
+      id="game-toggle"
+      type="button"
+    >
+      goat_game
+    </button>
+    
+    <button
+      id="worm-toggle"
+      type="button"
+    >
+      worm
+    </button>
+
     <h1 id="typing"></h1>
     <div class="controls">
         <div class="control">
