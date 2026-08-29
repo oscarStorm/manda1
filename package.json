@@ -2,6 +2,9 @@
   "name": "oscar-personal-website",
   "private": true,
   "type": "module",
+  "scripts": {
+    "dev": "bash -c 'set -a && source .env.local && set +a && npx vercel@latest dev --listen 3001'"
+  },
   "dependencies": {
     "@neon/config": "^1.1.0",
     "@neon/env": "^1.1.6",

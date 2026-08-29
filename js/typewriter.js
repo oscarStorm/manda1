@@ -22,18 +22,18 @@ function type() {
   } else {
     element.textContent = current.substring(0, characterIndex--);
   }
-
-  let speed = deleting ? 40 : 80;
+//the lover speed is the faster it deletes. It's time between actions
+  let speed = deleting ? 15 : 45;
 
   if (!deleting && characterIndex > current.length) {
     deleting = true;
-    speed = 2500; // Pause before deleting
+    speed = 1800; // Pause before deleting
   }
 
   if (deleting && characterIndex < 0) {
     deleting = false;
     messageIndex = (messageIndex + 1) % messages.length;
-    speed = 10;
+    speed = 30;
   }
 
   setTimeout(type, speed);
