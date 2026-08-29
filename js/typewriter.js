@@ -1,13 +1,13 @@
 const element = document.getElementById("typing");
 
 const messages = [
-  "Stay awhile and listen!",
-  "Hello there, i'm Oscar..",
-  "CS student",
-  "Linux enjoyer - arch ftw",
-  "Chess enjoyer - king's gambit ftw",
-  "Github: https://github.com/oscarStorm",
-  "Mail: oscar.emil.storm@gmail.com",
+  "Hello there, i'm Oscar",
+  "Have a look around!",
+  "i've made a couple of simulations",
+  "the worm page explore procedural animations using inverse kinematics",
+  "the page you are on now is the classic algorithm used to describe a flocking system",
+  "try altering the parameters in the top left corner!",
+  "There is also some small handrawn pixelart games!"
 ];
 
 let messageIndex = 0;
@@ -33,7 +33,7 @@ function type() {
   if (deleting && characterIndex < 0) {
     deleting = false;
     messageIndex = (messageIndex + 1) % messages.length;
-    speed = 200;
+    speed = 10;
   }
 
   setTimeout(type, speed);

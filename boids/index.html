@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/navigation.js" defer></script>
+    <script src="../js/boids.js" defer></script>
+    <script src="../js/typewriter.js" defer></script>
+    <script src="../js/boids-route.js" defer></script>
+    <title>Boids</title>
+</head>
+<body>
+    <canvas id="boid-canvas"></canvas>
+    <site-navigation></site-navigation>
+    <h1 id="typing"></h1>
+    <div class="controls">
+        <div class="control">
+            <label for="separation">Separation</label>
+            <input id="separation" type="range" min="0" max="3" step="0.1" value="2.1">
+            <span id="separation-value">2.1</span>
+        </div>
+        <div class="control">
+            <label for="alignment">Alignment</label>
+            <input id="alignment" type="range" min="0" max="3" step="0.1" value="0.7">
+            <span id="alignment-value">0.7</span>
+        </div>
+        <div class="control">
+            <label for="cohesion">Cohesion</label>
+            <input id="cohesion" type="range" min="0" max="3" step="0.1" value="1.8">
+            <span id="cohesion-value">1.8</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="../css/analytics.css">
+    <script src="../js/analytics-dashboard.js" defer></script>
+    <title>Site analytics</title>
+</head>
+<body>
+    <main class="dashboard">
+        <header class="dashboard-header">
+            <div>
+                <p class="eyebrow">Private dashboard</p>
+                <h1>Site analytics</h1>
+            </div>
+            <div class="dashboard-controls">
+                <label>
+                    Period
+                    <select id="period">
+                        <option value="7">7 days</option>
+                        <option value="30" selected>30 days</option>
+                        <option value="90">90 days</option>
+                        <option value="365">365 days</option>
+                    </select>
+                </label>
+                <button id="refresh" type="button">Refresh</button>
+            </div>
+        </header>
+
+        <form id="login" class="login-panel">
+            <label for="admin-token">Analytics admin token</label>
+            <div class="login-row">
+                <input id="admin-token" type="password" autocomplete="current-password" required>
+                <button type="submit">Open dashboard</button>
+            </div>
+            <p>The token is retained only for this browser tab.</p>
+        </form>
+
+        <p id="status" role="status"></p>
+
+        <section id="analytics-content" hidden>
+            <div class="metric-grid">
+                <article class="metric-card">
+                    <span>Page views</span>
+                    <strong id="total-views">0</strong>
+                </article>
+                <article class="metric-card">
+                    <span>Unique visits</span>
+                    <strong id="unique-visitors">0</strong>
+                </article>
+            </div>
+
+            <div class="panel-grid">
+                <section class="panel">
+                    <h2>Daily traffic</h2>
+                    <div class="table-scroll">
+                        <table>
+                            <thead><tr><th>Date</th><th>Views</th><th>Unique</th></tr></thead>
+                            <tbody id="daily-traffic"></tbody>
+                        </table>
+                    </div>
+                </section>
+                <section class="panel">
+                    <h2>Top routes</h2>
+                    <div class="table-scroll">
+                        <table>
+                            <thead><tr><th>Route</th><th>Views</th></tr></thead>
+                            <tbody id="top-pages"></tbody>
+                        </table>
+                    </div>
+                </section>
+                <section class="panel">
+                    <h2>Referrers</h2>
+                    <div class="table-scroll">
+                        <table>
+                            <thead><tr><th>Host</th><th>Views</th></tr></thead>
+                            <tbody id="top-referrers"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

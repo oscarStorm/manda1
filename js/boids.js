@@ -227,11 +227,13 @@ class Vector {
           this.acceleration.add(cohesion);
       }
 
-      update() {
-          this.velocity.add(this.acceleration);
+      update(frameScale) {
+          this.velocity.x += this.acceleration.x * frameScale;
+          this.velocity.y += this.acceleration.y * frameScale;
           this.velocity.limit(this.maxSpeed);
 
-          this.position.add(this.velocity);
+          this.position.x += this.velocity.x * frameScale;
+          this.position.y += this.velocity.y * frameScale;
 
           this.acceleration.set(0, 0);
       }
@@ -289,6 +291,7 @@ class Vector {
 
   const boids = [];
   const boidCount = 100;
+  let lastFrameTime = null;
   let animationFrameId = null;
   let isRunning = false;
 
@@ -330,10 +333,24 @@ class Vector {
       boids.push(new Boid(canvas));
   }
 
-  function animate() {
+  function animate(timestamp) {
       if (!isRunning) {
           return;
       }
+
+      animationFrameId = requestAnimationFrame(animate);
+
+      if (lastFrameTime === null) {
+          lastFrameTime = timestamp;
+          return;
+      }
+
+      const deltaSeconds = Math.min(
+          (timestamp - lastFrameTime) / 1000,
+          1 / 30
+      );
+      const frameScale = deltaSeconds * 60;
+      lastFrameTime = timestamp;
 
       context.fillStyle = "black";
       context.fillRect(
@@ -362,11 +379,9 @@ class Vector {
               cohesionWeight
           );
 
-          boid.update();
+          boid.update(frameScale);
           boid.show(context);
       }
-
-      animationFrameId = requestAnimationFrame(animate);
   }
 
   function start() {
@@ -375,6 +390,7 @@ class Vector {
       }
 
       isRunning = true;
+      lastFrameTime = null;
       resizeCanvas();
 
       if (boids.length === 0) {
@@ -383,7 +399,7 @@ class Vector {
           }
       }
 
-      animate();
+      animationFrameId = requestAnimationFrame(animate);
   }
 
   function stop() {

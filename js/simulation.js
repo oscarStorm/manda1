@@ -88,10 +88,11 @@
       ctx.fill();
     }
 
-    update() {
+    update(frameScale) {
       const maxSpeed = 6;
-      const maxTurn = 0.04;
-      const desiredVel = this.vel.copy().add(this.acc);
+      const maxTurn = 0.04 * frameScale;
+      const scaledAcceleration = this.acc.copy().mult(frameScale);
+      const desiredVel = this.vel.copy().add(scaledAcceleration);
       const currentAngle = this.vel.heading();
       const desiredAngle = desiredVel.heading();
       const turn = angleDifference(desiredAngle, currentAngle);
@@ -100,7 +101,7 @@
 
       this.vel = Vector.fromAngle(newAngle, desiredVel.mag());
       this.vel.limit(maxSpeed);
-      this.pos.add(this.vel);
+      this.pos.add(this.vel.copy().mult(frameScale));
       this.acc.mult(0);
     }
 
@@ -229,10 +230,9 @@
   let height = 0;
   let limb;
   let particle;
-  let lastFrameTime = 0;
+  let lastFrameTime = null;
   let animationFrameId = null;
   let isRunning = false;
-  const frameInterval = 1000 / 60;
 
   function resizeCanvas() {
     const pixelRatio = window.devicePixelRatio || 1;
@@ -263,21 +263,23 @@
 
     animationFrameId = requestAnimationFrame(draw);
 
-    if (timestamp - lastFrameTime < frameInterval) {
+    if (lastFrameTime === null) {
+      lastFrameTime = timestamp;
       return;
     }
 
+    const deltaSeconds = Math.min((timestamp - lastFrameTime) / 1000, 1 / 30);
+    const frameScale = deltaSeconds * 60;
     lastFrameTime = timestamp;
+
+    particle.avoidEdges(width, height);
+    particle.update(frameScale);
+
     limb.target = particle.pos.copy();
     limb.update();
-
     drawBackground();
     limb.display(ctx);
     //particle.display(ctx);
-
-    particle.update();
-    //particle.edges(width, height);
-    particle.avoidEdges(width, height);
   }
 
   function handleResize() {
@@ -292,7 +294,7 @@
     }
 
     isRunning = true;
-    lastFrameTime = 0;
+    lastFrameTime = null;
     setup();
     window.addEventListener("resize", handleResize);
     animationFrameId = requestAnimationFrame(draw);
