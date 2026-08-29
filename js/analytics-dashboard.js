@@ -8,6 +8,13 @@ const content = document.getElementById("analytics-content");
 
 let adminToken = sessionStorage.getItem("analyticsAdminToken") || "";
 
+const dateFormatter = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
 function addCell(row, value) {
   const cell = document.createElement("td");
   cell.textContent = value;
@@ -41,9 +48,16 @@ function renderAnalytics(data) {
   document.getElementById("total-views").textContent = data.overview.views;
   document.getElementById("unique-visitors").textContent = data.overview.unique_visitors;
 
+  const activeDays = data.daily
+    .filter((day) => Number(day.views) > 0)
+    .map((day) => ({
+      ...day,
+      day: dateFormatter.format(new Date(day.day)),
+    }));
+
   renderRows(
     "daily-traffic",
-    data.daily,
+    activeDays,
     ["day", "views", "unique_visitors"],
     "No traffic yet",
   );

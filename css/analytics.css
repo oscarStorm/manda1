@@ -138,7 +138,13 @@ select {
 }
 
 .panel h2 {
-    margin-top: 0;
+    margin: 0;
+}
+
+.panel-note {
+    margin: 6px 0 16px;
+    color: #a1a1aa;
+    font-size: 0.9rem;
 }
 
 .table-scroll {
