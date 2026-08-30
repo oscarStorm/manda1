@@ -3,10 +3,10 @@ const element = document.getElementById("typing");
 const messages = [
   "Hello there, i'm Oscar",
   "Have a look around!",
-  "i've made a couple of simulations",
-  "the worm page explore procedural animations using inverse kinematics",
-  "the page you are on now is the classic algorithm used to describe a flocking system",
-  "try altering the parameters in the top left corner!",
+  "I've made a couple of simulations",
+  "The worm page explore procedural animations using inverse kinematics",
+  "The page you are on now is the classic algorithm used to describe a flocking system",
+  "Try altering the parameters in the top left corner!",
   "There is also some small handrawn pixelart games!"
 ];
 

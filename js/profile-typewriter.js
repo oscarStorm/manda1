@@ -17,8 +17,17 @@ const profileLines = [
 "I'm currently looking for opportunities in the IT industry and encourage employers to reach out if they think I could be a good fit.",
 "",
 "Contact information:",
-"Email: oscar.emil.storm@gmail.com",
-"GitHub: https://github.com/oscarStorm",
+{
+  prefix: "Email: ",
+  text: "oscar.emil.storm@gmail.com",
+  href: "mailto:oscar.emil.storm@gmail.com"
+},
+{
+  prefix: "GitHub: ",
+  text: "github.com/oscarStorm",
+  href: "https://github.com/oscarStorm",
+  external: true
+},
 "Phone: +45 53535623"
 ];
 
@@ -28,10 +37,31 @@ const delayBetweenLines = 600;
 let lineIndex = 0;
 let characterIndex = 0;
 let currentLine;
+let typingTarget;
 
 function createLine() {
+  const line = profileLines[lineIndex];
   currentLine = document.createElement("span");
   currentLine.className = "profile-line profile-line-current";
+
+  if (typeof line === "string") {
+    typingTarget = currentLine;
+  } else {
+    currentLine.append(document.createTextNode(line.prefix));
+
+    const link = document.createElement("a");
+    link.className = "profile-link";
+    link.href = line.href;
+
+    if (line.external) {
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    }
+
+    currentLine.append(link);
+    typingTarget = link;
+  }
+
   profileTyping.append(currentLine);
 }
 
@@ -40,8 +70,9 @@ function typeProfile() {
     createLine();
   }
 
-  const text = profileLines[lineIndex];
-  currentLine.textContent = text.substring(0, characterIndex + 1);
+  const line = profileLines[lineIndex];
+  const text = typeof line === "string" ? line : line.text;
+  typingTarget.textContent = text.substring(0, characterIndex + 1);
   characterIndex += 1;
 
   if (characterIndex < text.length) {

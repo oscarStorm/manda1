@@ -68,7 +68,7 @@ canvas {
 
 #profile-typing {
     margin: 0;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 600;
     line-height: 1.5;
     text-align: left;
@@ -77,6 +77,17 @@ canvas {
 .profile-line {
     display: block;
     min-height: 1.5em;
+}
+
+.profile-link {
+    color: rgb(235 202 40);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.profile-link:hover,
+.profile-link:focus-visible {
+    color: white;
 }
 
 .profile-line-current::after {
