@@ -4,9 +4,10 @@ const profileLines = [
 "My name is Oscar Storm, and I'm a Computer Science student.",
 "I live in Frederiksberg with my girlfriend and our son, who just turned 7!",
 "",
-"I've been running Linux as my main OS for about a year now, and I haven't looked back since.",
 "I'm interested in every part of the tech stack, from top to bottom.",
 "Not just how the different layers fit together, but how the technology actually works — from hardware to software.",
+"I started tinkering with an old thinkpad t420 about a year ago, and got it running Arch Linux",
+"Before long - all my machines where running Arch, couldent help myself.",
 "",
 "I think the entire IT industry is evolving rapidly with the rise of AI, and it's exciting to be along for the ride.",
 "To gain hands-on experience with agentic coding, I've set up an open-source local AI environment.",
@@ -32,7 +33,7 @@ const profileLines = [
 "Phone: +45 53535623"
 ];
 
-const characterDelay = 40;
+const characterDelay = 20;
 const delayBetweenLines = 600;
 
 let lineIndex = 0;
