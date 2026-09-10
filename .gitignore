@@ -131,3 +131,8 @@ dist
 .neon
 .vercel
 .env*
+
+# Local agent skills and setup documentation
+/.agents/skills/
+/skills-lock.json
+/ANALYTICS_SETUP.md
